@@ -1,0 +1,93 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+    <Rules>
+      <Rule ID="NFS.ALD.Rule1.Alert.Rule" Target="TargetClass" Enabled="true">
+        <Category>Custom</Category>
+        <DataSources>
+          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.EventProvider">
+            <ComputerName>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/NetworkName$</ComputerName>
+            <LogName>UnhealthyLogName</LogName>
+            <Expression>
+              <And>
+                <Expression>
+                  <SimpleExpression>
+                    <ValueExpression>
+                      <XPathQuery Type="String">PublisherName</XPathQuery>
+                    </ValueExpression>
+                    <Operator>Equal</Operator>
+                    <ValueExpression>
+                      <Value Type="String">UnhealthyEventSource</Value>
+                    </ValueExpression>
+                  </SimpleExpression>
+                </Expression>
+                <Expression>
+                  <SimpleExpression>
+                    <ValueExpression>
+                      <XPathQuery Type="UnsignedInteger">EventDisplayNumber</XPathQuery>
+                    </ValueExpression>
+                    <Operator>Equal</Operator>
+                    <ValueExpression>
+                      <Value Type="UnsignedInteger">UnhealthyEventID</Value>
+                    </ValueExpression>
+                  </SimpleExpression>
+                </Expression>
+              </And>
+            </Expression>
+          </DataSource>
+        </DataSources>
+        <WriteActions>
+          <WriteAction ID="GenerateAlert" TypeID="Health!System.Health.GenerateAlert">
+            <Priority>0</Priority>
+            <Severity>0</Severity>
+            <AlertMessageId>$MPElement[Name="NFS.ALD.RuleName.Alert.Rule.AlertMessage"]$</AlertMessageId>
+            <AlertParameters>
+              <AlertParameter1>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/NetworkName$</AlertParameter1>
+              <AlertParameter2>$Data/EventDisplayNumber$</AlertParameter2>
+              <AlertParameter3>$Data/EventDescription$</AlertParameter3>
+            </AlertParameters>
+            <Suppression>
+              <SuppressionValue/>
+            </Suppression>
+            <Custom1>$Target/Host/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</Custom1>
+          </WriteAction>
+        </WriteActions>
+      </Rule>
+    </Rules>
+  </Monitoring>
+  <Presentation>
+    <StringResources>
+      <StringResource ID="NFS.ALD.RuleName.Alert.Rule.AlertMessage" />
+    </StringResources>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="NFS.ALD.RuleName.Alert.Rule">
+          <Name>RuleDisplayName</Name>
+          <Description>RuleDescription</Description>
+        </DisplayString>
+        <DisplayString ElementID="NFS.ALD.RuleName.Alert.Rule.AlertMessage">
+          <Name>EventID UnhealthyEventID' from source 'UnhealthyEventSource' has been found in the UnhealthyLogName log.</Name>
+          <Description>
+            EventID UnhealthyEventID' from source 'UnhealthyEventSource' has been found in the UnhealthyLogName log on computer {0}.
+            Event details: {2}
+          </Description>
+        </DisplayString>
+      </DisplayStrings>
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="NFS.ALD.RuleName.Alert.Rule" Visible="true">
+          <MamlContent xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+            <maml:section>
+              <maml:title>Summary</maml:title>
+              <maml:para>Summary text</maml:para>
+            </maml:section>
+            <maml:section>
+              <maml:title>Resolution</maml:title>
+              <maml:para>Resolution text</maml:para>
+            </maml:section>
+          </MamlContent>
+        </KnowledgeArticle>
+      </KnowledgeArticles>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

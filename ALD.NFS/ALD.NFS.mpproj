@@ -52,10 +52,14 @@
     </ManagementPackReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Rules" />
     <Folder Include="Presentation" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Presentation\RootFolder.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\Rules.mpx">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
