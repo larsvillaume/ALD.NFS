@@ -13,7 +13,7 @@
       <DisplayStrings>
         <DisplayString ElementID="ALD.NFS.ServerRole.Class">
           <Name>NFS Server Role</Name>
-          <Description>Class description</Description>
+          <Description>This is a description for server role.</Description>
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>
