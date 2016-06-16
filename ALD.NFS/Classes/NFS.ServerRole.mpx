@@ -1,0 +1,21 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="ALD.NFS.ServerRole.Class" Base="Windows!Microsoft.Windows.ComputerRole"
+            Accessibility="Public" Abstract="false" Hosted="true" Singleton="false">
+        </ClassType>
+      </ClassTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="ALD.NFS.ServerRole.Class">
+          <Name>NFS Server Role</Name>
+          <Description>Class description</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

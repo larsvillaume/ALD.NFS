@@ -52,10 +52,14 @@
     </ManagementPackReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Classes" />
     <Folder Include="Rules" />
     <Folder Include="Presentation" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\NFS.ServerRole.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Presentation\RootFolder.mpx">
       <SubType>Code</SubType>
     </Compile>
