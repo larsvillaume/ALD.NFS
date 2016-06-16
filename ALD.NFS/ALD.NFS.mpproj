@@ -59,9 +59,6 @@
     <Compile Include="Presentation\RootFolder.mpx">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Rules\Rules.mpx">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
 </Project>
